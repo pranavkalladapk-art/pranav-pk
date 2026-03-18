@@ -81,12 +81,14 @@ const Contact = () => {
             />
             <input
               type="email"
+              name="email"
               placeholder="Email"
               required
               className="w-full px-5 py-3.5 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary/50 transition-colors"
             />
           </div>
           <textarea
+            name="message"
             placeholder="Tell me about your project..."
             rows={5}
             required

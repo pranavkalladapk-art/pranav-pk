@@ -44,16 +44,27 @@ const Portfolio = () => {
 
         <div className="grid md:grid-cols-3 gap-4">
           {projects.map((project, i) => (
-            <motion.div
+            <motion.a
               key={project.title}
+              href={project.youtubeId ? `https://youtu.be/${project.youtubeId}` : "#"}
+              target={project.youtubeId ? "_blank" : undefined}
+              rel={project.youtubeId ? "noopener noreferrer" : undefined}
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`group relative rounded-xl overflow-hidden cursor-pointer aspect-video bg-gradient-to-br ${colors[i]} border border-border ${project.span}`}
+              className={`group relative rounded-xl overflow-hidden cursor-pointer aspect-video border border-border ${project.span} ${!project.youtubeId ? `bg-gradient-to-br ${colors[i]}` : ''}`}
             >
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500">
+              {project.youtubeId && (
+                <img
+                  src={`https://img.youtube.com/vi/${project.youtubeId}/hqdefault.jpg`}
+                  alt={project.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+              )}
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500 bg-background/40">
                 <span className="text-xs uppercase tracking-[0.2em] text-secondary/80 mb-2">{project.category}</span>
                 <h3 className="text-lg font-display font-semibold text-foreground text-center">{project.title}</h3>
               </div>
@@ -63,7 +74,7 @@ const Portfolio = () => {
                   <Play className="w-6 h-6 text-foreground ml-0.5" strokeWidth={1.5} />
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 
 const projects = [
-  { title: "Brand Film — Luxe", category: "Cinematic", span: "md:col-span-2" },
-  { title: "Product Launch", category: "Commercial", span: "" },
-  { title: "Reels Campaign", category: "Social Media", span: "" },
-  { title: "AI Dreamscape", category: "AI Visuals", span: "" },
-  { title: "Documentary Short", category: "Cinematic", span: "" },
-  { title: "AI Concept Art", category: "AI Visuals", span: "md:col-span-2" },
+  { title: "Brand Film — Luxe", category: "Cinematic", span: "md:col-span-2", youtubeId: null },
+  { title: "Product Launch", category: "Commercial", span: "", youtubeId: null },
+  { title: "Reels Campaign", category: "Social Media", span: "", youtubeId: null },
+  { title: "AI Dreamscape", category: "AI Visuals", span: "", youtubeId: null },
+  { title: "Documentary Short", category: "Cinematic", span: "", youtubeId: "V_8y-Ai3x5k" },
+  { title: "AI Concept Art", category: "AI Visuals", span: "md:col-span-2", youtubeId: null },
 ];
 
 const colors = [

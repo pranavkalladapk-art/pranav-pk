@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Instagram, Linkedin, Youtube, Send } from "lucide-react";
+import { Instagram, Linkedin, Send } from "lucide-react";
 import { useState, FormEvent } from "react";
 
 const fadeUp = {
@@ -89,7 +89,6 @@ const Contact = () => {
           {[
             { icon: Instagram, href: "https://www.instagram.com/an_owner_of_the_wizard_fingers/", label: "Instagram" },
             { icon: Linkedin, href: "#", label: "LinkedIn" },
-            { icon: Youtube, href: "#", label: "YouTube" },
           ].map(({ icon: Icon, href, label }) => (
             <a
               key={label}

@@ -44,22 +44,6 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Profile Image */}
-        <motion.div
-          className="flex-shrink-0"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-        >
-          <div className="relative">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/30 to-secondary/20 blur-2xl scale-110" />
-            <img
-              src={profileImg}
-              alt="Pranav - Creative Professional"
-              className="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl glow-image"
-            />
-          </div>
-        </motion.div>
       </div>
 
       {/* Scroll indicator */}

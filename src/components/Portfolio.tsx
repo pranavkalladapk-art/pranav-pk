@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 
 const projects = [
-  { title: "Brand Film — Luxe", category: "Cinematic", span: "md:col-span-2", youtubeId: null, link: null },
+  { title: "Brand Film", category: "Cinematic", span: "md:col-span-2", youtubeId: null, link: "https://www.instagram.com/reel/DVixmaCghSe/" },
   { title: "Product Launch", category: "Commercial", span: "", youtubeId: null, link: null },
   { title: "Reels Campaign", category: "Social Media", span: "", youtubeId: null, link: "https://www.instagram.com/reel/DVixmaCghSe/" },
   { title: "AI Dreamscape", category: "AI Visuals", span: "", youtubeId: null, link: null },

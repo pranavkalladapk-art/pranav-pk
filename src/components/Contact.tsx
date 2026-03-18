@@ -87,7 +87,7 @@ const Contact = () => {
           className="flex justify-center gap-5 mt-12"
         >
           {[
-            { icon: Instagram, href: "#", label: "Instagram" },
+            { icon: Instagram, href: "https://www.instagram.com/an_owner_of_the_wizard_fingers/", label: "Instagram" },
             { icon: Linkedin, href: "#", label: "LinkedIn" },
             { icon: Youtube, href: "#", label: "YouTube" },
           ].map(({ icon: Icon, href, label }) => (

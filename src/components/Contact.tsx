@@ -74,6 +74,7 @@ const Contact = () => {
           <div className="grid sm:grid-cols-2 gap-5">
             <input
               type="text"
+              name="name"
               placeholder="Name"
               required
               className="w-full px-5 py-3.5 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary/50 transition-colors"

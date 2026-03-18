@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Instagram, Linkedin, Youtube, Send } from "lucide-react";
+import { Instagram, Linkedin, Send } from "lucide-react";
 import { useState, FormEvent } from "react";
 
 const fadeUp = {

@@ -46,9 +46,9 @@ const Portfolio = () => {
           {projects.map((project, i) => (
             <motion.a
               key={project.title}
-              href={project.youtubeId ? `https://youtu.be/${project.youtubeId}` : "#"}
-              target={project.youtubeId ? "_blank" : undefined}
-              rel={project.youtubeId ? "noopener noreferrer" : undefined}
+              href={project.youtubeId ? `https://youtu.be/${project.youtubeId}` : project.link || "#"}
+              target={project.youtubeId || project.link ? "_blank" : undefined}
+              rel={project.youtubeId || project.link ? "noopener noreferrer" : undefined}
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"

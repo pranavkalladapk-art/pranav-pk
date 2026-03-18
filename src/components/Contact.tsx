@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Instagram, Linkedin, Send } from "lucide-react";
 import { useState, FormEvent } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -9,11 +11,35 @@ const fadeUp = {
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setLoading(true);
+
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: { name, email, message },
+      });
+
+      if (error) throw error;
+
+      setSubmitted(true);
+      toast.success("Message sent successfully!");
+      form.reset();
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -48,18 +74,21 @@ const Contact = () => {
           <div className="grid sm:grid-cols-2 gap-5">
             <input
               type="text"
+              name="name"
               placeholder="Name"
               required
               className="w-full px-5 py-3.5 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary/50 transition-colors"
             />
             <input
               type="email"
+              name="email"
               placeholder="Email"
               required
               className="w-full px-5 py-3.5 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary/50 transition-colors"
             />
           </div>
           <textarea
+            name="message"
             placeholder="Tell me about your project..."
             rows={5}
             required
@@ -67,9 +96,10 @@ const Contact = () => {
           />
           <button
             type="submit"
-            className="w-full py-3.5 rounded-lg bg-primary text-primary-foreground font-body font-medium text-sm tracking-wide glow-primary transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
+            disabled={loading}
+            className="w-full py-3.5 rounded-lg bg-primary text-primary-foreground font-body font-medium text-sm tracking-wide glow-primary transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 disabled:opacity-50"
           >
-            {submitted ? "Message Sent!" : (
+            {submitted ? "Message Sent!" : loading ? "Sending..." : (
               <>
                 Send Message <Send className="w-4 h-4" strokeWidth={1.5} />
               </>

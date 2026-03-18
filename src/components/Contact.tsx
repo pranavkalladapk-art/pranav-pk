@@ -96,9 +96,10 @@ const Contact = () => {
           />
           <button
             type="submit"
-            className="w-full py-3.5 rounded-lg bg-primary text-primary-foreground font-body font-medium text-sm tracking-wide glow-primary transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
+            disabled={loading}
+            className="w-full py-3.5 rounded-lg bg-primary text-primary-foreground font-body font-medium text-sm tracking-wide glow-primary transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 disabled:opacity-50"
           >
-            {submitted ? "Message Sent!" : (
+            {submitted ? "Message Sent!" : loading ? "Sending..." : (
               <>
                 Send Message <Send className="w-4 h-4" strokeWidth={1.5} />
               </>

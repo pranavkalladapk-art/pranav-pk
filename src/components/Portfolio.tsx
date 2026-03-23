@@ -5,7 +5,7 @@ const projects = [
   { title: "Brand Film", category: "Cinematic", span: "md:col-span-2", youtubeId: null, link: "https://www.instagram.com/reel/DVixmaCghSe/" },
   { title: "Product Launch", category: "Commercial", span: "", youtubeId: null, link: null },
   { title: "Reels Campaign", category: "Social Media", span: "", youtubeId: null, link: "https://www.instagram.com/reel/DVixmaCghSe/" },
-  { title: "AI Dreamscape", category: "AI Visuals", span: "", youtubeId: null, link: null },
+  { title: "AI Dreamscape", category: "AI Visuals", span: "", youtubeId: null, link: "https://www.instagram.com/reel/DSpjIubEh8f/" },
   { title: "Documentary Short", category: "Cinematic", span: "", youtubeId: "V_8y-Ai3x5k", link: null },
   { title: "AI Concept Art", category: "AI Visuals", span: "md:col-span-2", youtubeId: null, link: null },
 ];

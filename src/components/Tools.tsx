@@ -4,10 +4,10 @@ const tools = [
   "Adobe Premiere Pro",
   "After Effects",
   "DaVinci Resolve",
-  "Midjourney",
-  "Runway ML",
+  "Google AI",
+  "Higgsfield",
+  "Freepik",
   "Photoshop",
-  "Figma",
   "CapCut",
 ];
 

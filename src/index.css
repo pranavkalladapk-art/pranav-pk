@@ -4,6 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+*, *::before, *::after {
+  cursor: url('/scissors-cursor.png') 16 16, auto !important;
+}
+
+a, button, [role="button"], input, textarea, select, label {
+  cursor: url('/scissors-cursor.png') 16 16, pointer !important;
+}
+
 @layer base {
   :root {
     --background: 240 10% 4%;

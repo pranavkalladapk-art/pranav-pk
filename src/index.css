@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  cursor: url('/src/assets/scissors-cursor.png') 16 16, auto;
+}
+
 @layer base {
   :root {
     --background: 240 10% 4%;

@@ -113,11 +113,11 @@ const Portfolio = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`group relative rounded-xl overflow-hidden border border-border ${project.span} ${!project.thumbnailYoutubeId ? `bg-gradient-to-br ${colors[i]}` : ''}`}
+              className={`group relative rounded-xl overflow-hidden border border-border flex flex-col ${project.span} ${!project.thumbnailYoutubeId ? `bg-gradient-to-br ${colors[i]}` : ''}`}
             >
               {/* Card visual */}
               <div
-                className="relative aspect-video cursor-pointer"
+                className="relative aspect-video flex-1 min-h-0 cursor-pointer"
                 onClick={() => project.links.length > 0 && toggleExpand(i)}
               >
                 {project.thumbnailYoutubeId && (

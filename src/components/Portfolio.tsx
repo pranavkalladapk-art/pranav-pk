@@ -1,13 +1,68 @@
-import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Play, ChevronDown, ExternalLink } from "lucide-react";
 
-const projects = [
-  { title: "Brand Film", category: "Cinematic", span: "md:col-span-2", youtubeId: null, link: "https://www.instagram.com/reel/DVixmaCghSe/" },
-  { title: "Product Launch", category: "Commercial", span: "", youtubeId: null, link: null },
-  { title: "Reels Campaign", category: "Social Media", span: "", youtubeId: null, link: "https://www.instagram.com/reel/DVixmaCghSe/" },
-  { title: "AI Dreamscape", category: "AI Visuals", span: "", youtubeId: null, link: "https://www.instagram.com/reel/DSpvvr5iZ5V/" },
-  { title: "Documentary Short", category: "Cinematic", span: "", youtubeId: "V_8y-Ai3x5k", link: null },
-  { title: "AI Concept Art", category: "AI Visuals", span: "md:col-span-2", youtubeId: null, link: null },
+interface ProjectLink {
+  label: string;
+  url: string;
+  youtubeId?: string;
+}
+
+interface Project {
+  title: string;
+  category: string;
+  span: string;
+  links: ProjectLink[];
+  thumbnailYoutubeId?: string;
+}
+
+const projects: Project[] = [
+  {
+    title: "Brand Film",
+    category: "Cinematic",
+    span: "md:col-span-2",
+    thumbnailYoutubeId: undefined,
+    links: [
+      { label: "Instagram Reel", url: "https://www.instagram.com/reel/DVixmaCghSe/" },
+    ],
+  },
+  {
+    title: "Product Launch",
+    category: "Commercial",
+    span: "",
+    links: [],
+  },
+  {
+    title: "Reels Campaign",
+    category: "Social Media",
+    span: "",
+    links: [
+      { label: "Instagram Reel", url: "https://www.instagram.com/reel/DVixmaCghSe/" },
+    ],
+  },
+  {
+    title: "AI Dreamscape",
+    category: "AI Visuals",
+    span: "",
+    links: [
+      { label: "Instagram Reel", url: "https://www.instagram.com/reel/DSpvvr5iZ5V/" },
+    ],
+  },
+  {
+    title: "Documentary Short",
+    category: "Cinematic",
+    span: "",
+    thumbnailYoutubeId: "V_8y-Ai3x5k",
+    links: [
+      { label: "YouTube", url: "https://youtu.be/V_8y-Ai3x5k", youtubeId: "V_8y-Ai3x5k" },
+    ],
+  },
+  {
+    title: "AI Concept Art",
+    category: "AI Visuals",
+    span: "md:col-span-2",
+    links: [],
+  },
 ];
 
 const colors = [
@@ -25,6 +80,12 @@ const fadeUp = {
 };
 
 const Portfolio = () => {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggleExpand = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
   return (
     <section id="portfolio" className="py-28 px-6">
       <div className="container mx-auto max-w-5xl">
@@ -44,37 +105,72 @@ const Portfolio = () => {
 
         <div className="grid md:grid-cols-3 gap-4">
           {projects.map((project, i) => (
-            <motion.a
+            <motion.div
               key={project.title}
-              href={project.youtubeId ? `https://youtu.be/${project.youtubeId}` : project.link || "#"}
-              target={project.youtubeId || project.link ? "_blank" : undefined}
-              rel={project.youtubeId || project.link ? "noopener noreferrer" : undefined}
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`group relative rounded-xl overflow-hidden cursor-pointer aspect-video border border-border ${project.span} ${!project.youtubeId ? `bg-gradient-to-br ${colors[i]}` : ''}`}
+              className={`group relative rounded-xl overflow-hidden border border-border ${project.span} ${!project.thumbnailYoutubeId ? `bg-gradient-to-br ${colors[i]}` : ''}`}
             >
-              {project.youtubeId && (
-                <img
-                  src={`https://img.youtube.com/vi/${project.youtubeId}/hqdefault.jpg`}
-                  alt={project.title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
-                />
-              )}
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500 bg-background/40">
-                <span className="text-xs uppercase tracking-[0.2em] text-secondary/80 mb-2">{project.category}</span>
-                <h3 className="text-lg font-display font-semibold text-foreground text-center">{project.title}</h3>
-              </div>
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-background/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="w-14 h-14 rounded-full border-2 border-foreground/60 flex items-center justify-center scale-75 group-hover:scale-100 transition-transform duration-500">
-                  <Play className="w-6 h-6 text-foreground ml-0.5" strokeWidth={1.5} />
+              {/* Card visual */}
+              <div
+                className="relative aspect-video cursor-pointer"
+                onClick={() => project.links.length > 0 && toggleExpand(i)}
+              >
+                {project.thumbnailYoutubeId && (
+                  <img
+                    src={`https://img.youtube.com/vi/${project.thumbnailYoutubeId}/hqdefault.jpg`}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                )}
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500 bg-background/40">
+                  <span className="text-xs uppercase tracking-[0.2em] text-secondary/80 mb-2">{project.category}</span>
+                  <h3 className="text-lg font-display font-semibold text-foreground text-center">{project.title}</h3>
                 </div>
+                {/* Hover overlay */}
+                {project.links.length > 0 && (
+                  <div className="absolute inset-0 bg-background/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="flex items-center gap-2">
+                      <Play className="w-5 h-5 text-foreground" strokeWidth={1.5} />
+                      <span className="text-sm text-foreground font-body">{project.links.length} {project.links.length === 1 ? 'video' : 'videos'}</span>
+                      <ChevronDown className={`w-4 h-4 text-foreground transition-transform duration-300 ${expandedIndex === i ? 'rotate-180' : ''}`} />
+                    </div>
+                  </div>
+                )}
               </div>
-            </motion.a>
+
+              {/* Expandable links list */}
+              <AnimatePresence>
+                {expandedIndex === i && project.links.length > 0 && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden bg-background/80 backdrop-blur-sm border-t border-border"
+                  >
+                    <div className="p-3 space-y-1">
+                      {project.links.map((link, j) => (
+                        <a
+                          key={j}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-primary/10 transition-colors font-body"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,13 +1,68 @@
-import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Play, ChevronDown, ExternalLink } from "lucide-react";
 
-const projects = [
-  { title: "Brand Film", category: "Cinematic", span: "md:col-span-2", youtubeId: null, link: "https://www.instagram.com/reel/DVixmaCghSe/" },
-  { title: "Product Launch", category: "Commercial", span: "", youtubeId: null, link: null },
-  { title: "Reels Campaign", category: "Social Media", span: "", youtubeId: null, link: "https://www.instagram.com/reel/DVixmaCghSe/" },
-  { title: "AI Dreamscape", category: "AI Visuals", span: "", youtubeId: null, link: "https://www.instagram.com/reel/DSpvvr5iZ5V/" },
-  { title: "Documentary Short", category: "Cinematic", span: "", youtubeId: "V_8y-Ai3x5k", link: null },
-  { title: "AI Concept Art", category: "AI Visuals", span: "md:col-span-2", youtubeId: null, link: null },
+interface ProjectLink {
+  label: string;
+  url: string;
+  youtubeId?: string;
+}
+
+interface Project {
+  title: string;
+  category: string;
+  span: string;
+  links: ProjectLink[];
+  thumbnailYoutubeId?: string;
+}
+
+const projects: Project[] = [
+  {
+    title: "Brand Film",
+    category: "Cinematic",
+    span: "md:col-span-2",
+    thumbnailYoutubeId: undefined,
+    links: [
+      { label: "Instagram Reel", url: "https://www.instagram.com/reel/DVixmaCghSe/" },
+    ],
+  },
+  {
+    title: "Product Launch",
+    category: "Commercial",
+    span: "",
+    links: [],
+  },
+  {
+    title: "Reels Campaign",
+    category: "Social Media",
+    span: "",
+    links: [
+      { label: "Instagram Reel", url: "https://www.instagram.com/reel/DVixmaCghSe/" },
+    ],
+  },
+  {
+    title: "AI Dreamscape",
+    category: "AI Visuals",
+    span: "",
+    links: [
+      { label: "Instagram Reel", url: "https://www.instagram.com/reel/DSpvvr5iZ5V/" },
+    ],
+  },
+  {
+    title: "Documentary Short",
+    category: "Cinematic",
+    span: "",
+    thumbnailYoutubeId: "V_8y-Ai3x5k",
+    links: [
+      { label: "YouTube", url: "https://youtu.be/V_8y-Ai3x5k", youtubeId: "V_8y-Ai3x5k" },
+    ],
+  },
+  {
+    title: "AI Concept Art",
+    category: "AI Visuals",
+    span: "md:col-span-2",
+    links: [],
+  },
 ];
 
 const colors = [

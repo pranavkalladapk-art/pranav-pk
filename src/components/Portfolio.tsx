@@ -28,7 +28,7 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Product Launch",
+    title: "Product Video",
     category: "Commercial",
     span: "",
     links: [],

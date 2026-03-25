@@ -24,6 +24,7 @@ const projects: Project[] = [
     thumbnailYoutubeId: undefined,
     links: [
       { label: "Instagram Reel", url: "https://www.instagram.com/reel/DVixmaCghSe/" },
+      { label: "Brand Film", url: "https://drive.google.com/file/d/1aveKwh1DQAobbZVRnZgOpKkPNPsFgO6M/view?usp=sharing" },
     ],
   },
   {

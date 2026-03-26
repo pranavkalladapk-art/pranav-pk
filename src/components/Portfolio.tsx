@@ -85,6 +85,7 @@ const colors = [
   "from-secondary/15 to-secondary/5",
   "from-primary/10 to-secondary/15",
   "from-secondary/10 to-primary/15",
+  "from-primary/20 to-primary/10",
 ];
 
 const fadeUp = {

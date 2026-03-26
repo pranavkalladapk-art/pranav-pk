@@ -61,10 +61,12 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "AI Concept Art",
+    title: "AI Concept",
     category: "AI Visuals",
     span: "md:col-span-2",
-    links: [],
+    links: [
+      { label: "AI Concept", url: "https://drive.google.com/file/d/1tyxIa8d8opdpQe1E1ABQ-ieQjbSAqufJ/view?usp=sharing" },
+    ],
   },
 ];
 

@@ -68,6 +68,12 @@ const projects: Project[] = [
       { label: "AI Concept", url: "https://drive.google.com/file/d/1tyxIa8d8opdpQe1E1ABQ-ieQjbSAqufJ/view?usp=sharing" },
     ],
   },
+  {
+    title: "Explore",
+    category: "Other Main Contents",
+    span: "",
+    links: [],
+  },
 ];
 
 const colors = [

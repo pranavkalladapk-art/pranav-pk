@@ -70,7 +70,7 @@ const projects: Project[] = [
   },
   {
     title: "Explore",
-    category: "Other Main Contents",
+    category: "Other Contents",
     span: "",
     links: [],
   },

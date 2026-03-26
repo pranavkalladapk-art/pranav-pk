@@ -31,7 +31,9 @@ const projects: Project[] = [
     title: "Product Video",
     category: "Commercial",
     span: "",
-    links: [],
+    links: [
+      { label: "Product Video", url: "https://drive.google.com/file/d/11XUiwFwHLMcqxwMLrEqPbYZQYcDsowvl/view?usp=sharing" },
+    ],
   },
   {
     title: "Reels Campaign",

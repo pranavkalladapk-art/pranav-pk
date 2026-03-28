@@ -25,6 +25,7 @@ const projects: Project[] = [
     links: [
       { label: "Instagram Reel", url: "https://www.instagram.com/reel/DVixmaCghSe/" },
       { label: "Brand Film", url: "https://drive.google.com/file/d/1aveKwh1DQAobbZVRnZgOpKkPNPsFgO6M/view?usp=sharing" },
+      { label: "More Brand Films", url: "https://drive.google.com/drive/folders/1UyqRYxyA50j2lw1Ces2TM9YJJu3LmHN5?usp=sharing" },
     ],
   },
   {

@@ -49,6 +49,7 @@ const projects: Project[] = [
     span: "",
     links: [
       { label: "Instagram Reel", url: "https://www.instagram.com/reel/DSpvvr5iZ5V/" },
+      { label: "More AI Visuals", url: "https://drive.google.com/drive/folders/1Jku5nOI4v299DDuG6T69Fqk_b_IMWe1A?usp=sharing" },
     ],
   },
   {

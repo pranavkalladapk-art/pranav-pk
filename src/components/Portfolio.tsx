@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, ChevronDown, ExternalLink } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ProjectLink {
   label: string;
@@ -102,7 +103,23 @@ const fadeUp = {
 const Portfolio = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
+  const trackEvent = useCallback(async (projectTitle: string, eventType: 'view' | 'click', linkLabel?: string, linkUrl?: string) => {
+    try {
+      await supabase.from('portfolio_events').insert({
+        project_title: projectTitle,
+        event_type: eventType,
+        link_label: linkLabel ?? null,
+        link_url: linkUrl ?? null,
+      });
+    } catch (e) {
+      // Silent fail - don't break UX for analytics
+    }
+  }, []);
+
   const toggleExpand = (index: number) => {
+    if (expandedIndex !== index) {
+      trackEvent(projects[index].title, 'view');
+    }
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
@@ -180,6 +197,7 @@ const Portfolio = () => {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() => trackEvent(project.title, 'click', link.label, link.url)}
                           className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-primary/10 transition-colors font-body"
                         >
                           <ExternalLink className="w-3.5 h-3.5 shrink-0" />

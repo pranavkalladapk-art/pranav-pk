@@ -103,7 +103,23 @@ const fadeUp = {
 const Portfolio = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
+  const trackEvent = useCallback(async (projectTitle: string, eventType: 'view' | 'click', linkLabel?: string, linkUrl?: string) => {
+    try {
+      await supabase.from('portfolio_events').insert({
+        project_title: projectTitle,
+        event_type: eventType,
+        link_label: linkLabel ?? null,
+        link_url: linkUrl ?? null,
+      });
+    } catch (e) {
+      // Silent fail - don't break UX for analytics
+    }
+  }, []);
+
   const toggleExpand = (index: number) => {
+    if (expandedIndex !== index) {
+      trackEvent(projects[index].title, 'view');
+    }
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 

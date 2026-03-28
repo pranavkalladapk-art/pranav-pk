@@ -197,6 +197,7 @@ const Portfolio = () => {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() => trackEvent(project.title, 'click', link.label, link.url)}
                           className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-primary/10 transition-colors font-body"
                         >
                           <ExternalLink className="w-3.5 h-3.5 shrink-0" />

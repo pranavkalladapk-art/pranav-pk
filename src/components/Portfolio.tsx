@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, ChevronDown, ExternalLink } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ProjectLink {
   label: string;

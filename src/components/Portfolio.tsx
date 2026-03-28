@@ -28,11 +28,12 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Product Video",
+    title: "Commercial Video",
     category: "Commercial",
     span: "",
     links: [
       { label: "Product Video", url: "https://drive.google.com/file/d/11XUiwFwHLMcqxwMLrEqPbYZQYcDsowvl/view?usp=sharing" },
+      { label: "More Commercial Work", url: "https://drive.google.com/drive/folders/1wapvbBlE1SY6xj_I19cvsNCWXYQJO8fg?usp=sharing" },
     ],
   },
   {

@@ -74,6 +74,7 @@ const projects: Project[] = [
     span: "",
     links: [
       { label: "Explore Video", url: "https://drive.google.com/file/d/1mJ65SWNIjaeYbf221EFQnwa9Ar-Q6OGi/view?usp=sharing" },
+      { label: "More Content", url: "https://drive.google.com/drive/folders/1LVWtoX6psSZgPsSCldt-mAJJhd921LDp?usp=sharing" },
     ],
   },
 ];

@@ -51,17 +51,18 @@ const CursorTrail = () => {
         const dot = trail.current[i];
         const age = now - dot.timestamp;
         const life = 1 - age / TRAIL_FADE_MS;
-        const size = life * 6;
-        const alpha = life * 0.35;
+        const size = life * 10;
+        const alpha = life * 0.55;
 
         // Cyan-blue glow matching the cursor
         const gradient = ctx.createRadialGradient(
           dot.x, dot.y, 0,
           dot.x, dot.y, size * 3
         );
-        gradient.addColorStop(0, `hsla(200, 100%, 80%, ${alpha})`);
-        gradient.addColorStop(0.4, `hsla(210, 90%, 60%, ${alpha * 0.5})`);
-        gradient.addColorStop(1, `hsla(220, 80%, 50%, 0)`);
+        gradient.addColorStop(0, `hsla(195, 100%, 85%, ${alpha})`);
+        gradient.addColorStop(0.3, `hsla(210, 95%, 65%, ${alpha * 0.6})`);
+        gradient.addColorStop(0.6, `hsla(239, 84%, 67%, ${alpha * 0.25})`);
+        gradient.addColorStop(1, `hsla(239, 80%, 50%, 0)`);
 
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, size * 3, 0, Math.PI * 2);

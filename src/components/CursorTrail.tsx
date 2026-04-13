@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
-const TRAIL_LENGTH = 12;
-const TRAIL_FADE_MS = 600;
+const TRAIL_LENGTH = 24;
+const TRAIL_FADE_MS = 1000;
 
 interface TrailDot {
   x: number;

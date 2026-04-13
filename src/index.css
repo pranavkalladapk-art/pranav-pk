@@ -5,11 +5,11 @@
 @tailwind utilities;
 
 *, *::before, *::after {
-  cursor: url('/scissors-cursor.png') 16 16, auto !important;
+  cursor: url('/glow-cursor.png') 16 16, auto !important;
 }
 
 a, button, [role="button"], input, textarea, select, label {
-  cursor: url('/scissors-cursor.png') 16 16, pointer !important;
+  cursor: url('/glow-cursor.png') 16 16, pointer !important;
 }
 
 @layer base {

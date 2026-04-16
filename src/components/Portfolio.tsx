@@ -160,8 +160,11 @@ const Portfolio = () => {
                   <img
                     src={`https://img.youtube.com/vi/${project.thumbnailYoutubeId}/hqdefault.jpg`}
                     alt={project.title}
+                    width={480}
+                    height={360}
                     className="absolute inset-0 w-full h-full object-cover"
                     loading="lazy"
+                    decoding="async"
                   />
                 )}
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500 bg-background/40">

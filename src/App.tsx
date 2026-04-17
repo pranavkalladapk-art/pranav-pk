@@ -7,6 +7,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import CursorTrail from "./components/CursorTrail";
 import Index from "./pages/Index.tsx";
 
+// Detect touch / coarse-pointer devices (phones, tablets) to skip desktop-only effects
+const isTouchDevice =
+  typeof window !== "undefined" &&
+  (window.matchMedia?.("(pointer: coarse)").matches ||
+    "ontouchstart" in window);
+
 const Auth = lazy(() => import("./pages/Auth.tsx"));
 const Admin = lazy(() => import("./pages/Admin.tsx"));
 const Unsubscribe = lazy(() => import("./pages/Unsubscribe.tsx"));
@@ -16,7 +22,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <CursorTrail />
+    {!isTouchDevice && <CursorTrail />}
     <TooltipProvider>
       <Toaster />
       <Sonner />

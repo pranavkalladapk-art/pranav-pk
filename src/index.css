@@ -4,12 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
-*, *::before, *::after {
-  cursor: url('/glow-cursor.png') 20 20, auto !important;
-}
+/* Custom glow cursor only on devices with a fine pointer (desktop) */
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after {
+    cursor: url('/glow-cursor.png') 20 20, auto !important;
+  }
 
-a, button, [role="button"], input, textarea, select, label {
-  cursor: url('/glow-cursor.png') 20 20, pointer !important;
+  a, button, [role="button"], input, textarea, select, label {
+    cursor: url('/glow-cursor.png') 20 20, pointer !important;
+  }
 }
 
 @layer base {
@@ -98,12 +101,19 @@ a, button, [role="button"], input, textarea, select, label {
   box-shadow: 0 0 60px 10px hsl(239 84% 67% / 0.3), 0 0 100px 20px hsl(188 94% 53% / 0.1);
 }
 
-/* Glass effect */
+/* Glass effect — backdrop-filter is extremely expensive on iOS Safari, drop it on touch devices */
 .glass {
   background: var(--surface-glass);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid hsl(var(--border));
+}
+@media (hover: none) and (pointer: coarse) {
+  .glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: hsl(240 6% 9% / 0.92);
+  }
 }
 
 /* Mesh gradient background */

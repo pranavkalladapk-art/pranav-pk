@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 
 const Auth = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
@@ -94,14 +94,8 @@ const Auth = () => {
           </Button>
         </form>
 
-        <p className="text-center text-sm text-muted-foreground">
-          {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-          <button
-            onClick={() => setIsLogin(!isLogin)}
-            className="text-primary hover:underline font-medium"
-          >
-            {isLogin ? "Sign Up" : "Sign In"}
-          </button>
+        <p className="text-center text-xs text-muted-foreground">
+          Admin access only. Public registration is disabled.
         </p>
       </div>
     </div>

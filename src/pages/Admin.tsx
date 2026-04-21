@@ -36,6 +36,15 @@ const Admin = () => {
         navigate("/auth");
         return;
       }
+      const { data: isAdmin } = await supabase.rpc("has_role", {
+        _user_id: session.user.id,
+        _role: "admin",
+      });
+      if (!isAdmin) {
+        await supabase.auth.signOut();
+        navigate("/auth");
+        return;
+      }
       fetchEvents();
     };
 

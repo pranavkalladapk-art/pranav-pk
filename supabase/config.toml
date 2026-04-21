@@ -13,3 +13,5 @@ project_id = "kgucjhwrfnqzmnopiyoc"
     verify_jwt = false
   [functions.handle-email-suppression]
     verify_jwt = false
+  [functions.grant-admin-role]
+    verify_jwt = false

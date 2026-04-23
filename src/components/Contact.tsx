@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Instagram, Linkedin, Send } from "lucide-react";
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -12,6 +12,20 @@ const fadeUp = {
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // (Re)inject LinkedIn badge script so it scans the DOM after React mounts the badge.
+    const existing = document.querySelector<HTMLScriptElement>(
+      'script[src="https://platform.linkedin.com/badges/js/profile.js"]'
+    );
+    if (existing) existing.remove();
+    const script = document.createElement("script");
+    script.src = "https://platform.linkedin.com/badges/js/profile.js";
+    script.async = true;
+    script.defer = true;
+    script.type = "text/javascript";
+    document.body.appendChild(script);
+  }, []);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -137,7 +151,7 @@ const Contact = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex justify-center mt-10"
+          className="flex justify-center mt-10 w-full max-w-full overflow-hidden"
         >
           <div
             className="badge-base LI-profile-badge"

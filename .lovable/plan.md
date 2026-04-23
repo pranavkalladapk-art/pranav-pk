@@ -1,29 +1,44 @@
 
 
-## Fix favicon not updating on the site
+## Add LinkedIn Profile Badge
 
-**Problem**
-- `index.html` is missing a `<link rel="icon">` tag pointing to the new `/favicon.png`. Only the Apple touch icon is declared.
-- An old `public/favicon.ico` still exists. Browsers request `/favicon.ico` by default, so they keep showing the old icon.
-- The Google search result screenshot you shared shows Google's cached icon — that updates separately on Google's schedule, not instantly.
+Embed your official LinkedIn badge on the site so visitors can view your profile preview directly.
+
+**Where to place it**
+
+Add it to the Contact section (`src/components/Contact.tsx`), below the existing Instagram/LinkedIn social icons. This keeps all professional/social touchpoints grouped together.
 
 **Changes**
 
-1. **`index.html`** — add explicit favicon links with cache-busting:
+1. **`index.html`** — add the LinkedIn platform script once globally (near the end of `<body>`), so it loads on every route:
    ```html
-   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=3" />
-   <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=3" />
-   <link rel="shortcut icon" href="/favicon.png?v=3" type="image/png" />
-   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
+   <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
    ```
 
-2. **Regenerate `public/favicon.ico`** from the new wand image (multi-size 16/32/48). Browsers and many crawlers (including Google) request `/favicon.ico` by default, so this file must exist and match the new branding.
+2. **`src/components/Contact.tsx`** — render the badge markup inside a centered wrapper beneath the social icon row:
+   ```tsx
+   <div className="flex justify-center mt-10">
+     <div
+       className="badge-base LI-profile-badge"
+       data-locale="en_US"
+       data-size="large"
+       data-theme="dark"
+       data-type="HORIZONTAL"
+       data-vanity="pranav-a-56191b367"
+       data-version="v1"
+     >
+       <a
+         className="badge-base__link LI-simple-link"
+         href="https://ae.linkedin.com/in/pranav-a-56191b367?trk=profile-badge"
+       >
+         Pranav A
+       </a>
+     </div>
+   </div>
+   ```
 
-3. **Re-export `public/favicon.png`** at 512×512 and `public/apple-touch-icon.png` at 180×180 from the uploaded wand image to ensure they are the new asset (in case prior copy didn't take).
-
-4. **Bump cache version to `?v=3`** everywhere so browsers refetch.
-
-**After publishing**
-- Hard-refresh (Cmd/Ctrl+Shift+R) and verify `https://wizardfingers.com/favicon.ico` and `/favicon.png` both show the wand.
-- For Google search results: request re-indexing in Google Search Console. Google typically refreshes the displayed favicon within a few days to a few weeks — this is outside our control.
+**Notes**
+- Theme is set to `dark` to match the site's strict dark aesthetic.
+- LinkedIn's script auto-renders the badge on mount; no React-specific init needed.
+- Badge is rendered inside an iframe by LinkedIn, so site styles won't conflict.
 

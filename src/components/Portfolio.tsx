@@ -71,6 +71,7 @@ const projects: Project[] = [
     span: "md:col-span-2",
     links: [
       { label: "AI Concept", url: "https://drive.google.com/file/d/1tyxIa8d8opdpQe1E1ABQ-ieQjbSAqufJ/view?usp=sharing" },
+      { label: "AI Concept II", url: "https://drive.google.com/file/d/1sBAOIVdXMCsd5bpQFmFWNY9rSP4F48Nu/view?usp=sharing" },
     ],
   },
   {

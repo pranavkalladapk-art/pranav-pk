@@ -130,6 +130,32 @@ const Contact = () => {
             </a>
           ))}
         </motion.div>
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="flex justify-center mt-10"
+        >
+          <div
+            className="badge-base LI-profile-badge"
+            data-locale="en_US"
+            data-size="large"
+            data-theme="dark"
+            data-type="HORIZONTAL"
+            data-vanity="pranav-a-56191b367"
+            data-version="v1"
+          >
+            <a
+              className="badge-base__link LI-simple-link"
+              href="https://ae.linkedin.com/in/pranav-a-56191b367?trk=profile-badge"
+            >
+              Pranav A
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

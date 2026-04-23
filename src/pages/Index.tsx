@@ -406,7 +406,7 @@ const ContactSection = () => {
         >
           {[
             { icon: Instagram, href: "https://www.instagram.com/an_owner_of_the_wizard_fingers/", label: "Instagram" },
-            { icon: Linkedin, href: "https://www.linkedin.com/in/pranav-a-56191b367", label: "LinkedIn" },
+            { icon: Linkedin, href: "https://www.linkedin.com/in/pranav-a-56191b367/?skipRedirect=true", label: "LinkedIn" },
           ].map(({ icon: Icon, href, label }) => (
             <a key={label} href={href} aria-label={label} className="w-11 h-11 rounded-full border border-border flex items-center justify-center text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-foreground">
               <Icon className="w-5 h-5" strokeWidth={1.5} />

@@ -132,7 +132,7 @@ const Contact = () => {
         >
           {[
             { icon: Instagram, href: "https://www.instagram.com/an_owner_of_the_wizard_fingers/", label: "Instagram" },
-            { icon: Linkedin, href: "https://www.linkedin.com/in/pranav-a-56191b367", label: "LinkedIn" },
+            { icon: Linkedin, href: "https://www.linkedin.com/in/pranav-a-56191b367/?skipRedirect=true", label: "LinkedIn" },
           ].map(({ icon: Icon, href, label }) => (
             <a
               key={label}
@@ -164,7 +164,7 @@ const Contact = () => {
           >
             <a
               className="badge-base__link LI-simple-link"
-              href="https://ae.linkedin.com/in/pranav-a-56191b367?trk=profile-badge"
+              href="https://www.linkedin.com/in/pranav-a-56191b367/?skipRedirect=true"
             >
               Pranav A
             </a>

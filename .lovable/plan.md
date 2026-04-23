@@ -1,44 +1,27 @@
 
 
-## Add LinkedIn Profile Badge
+## Verify LinkedIn Badge Rendering
 
-Embed your official LinkedIn badge on the site so visitors can view your profile preview directly.
+Use browser automation to confirm the LinkedIn badge loads, displays correctly, and doesn't overlap surrounding Contact elements at desktop and mobile breakpoints.
 
-**Where to place it**
+**Steps**
 
-Add it to the Contact section (`src/components/Contact.tsx`), below the existing Instagram/LinkedIn social icons. This keeps all professional/social touchpoints grouped together.
+1. **Desktop check (1280×720)**
+   - Navigate to `/#contact` in the preview.
+   - Wait for LinkedIn's `profile.js` to hydrate the badge into an iframe.
+   - Screenshot the Contact section.
+   - Verify: badge iframe is present, centered, sits below the Instagram/LinkedIn icon row with clear spacing (`mt-10`), and does not overflow the container or overlap the social icons or footer.
 
-**Changes**
+2. **Mobile check (390×844)**
+   - Resize viewport to mobile.
+   - Re-navigate to `/#contact`.
+   - Screenshot the Contact section.
+   - Verify: badge fits within viewport width, remains centered, no horizontal scroll, no overlap with social icons above or page edges.
 
-1. **`index.html`** — add the LinkedIn platform script once globally (near the end of `<body>`), so it loads on every route:
-   ```html
-   <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-   ```
+3. **Report**
+   - Summarize findings with both screenshots.
+   - If issues found (badge missing, overflow, overlap), list them and propose a fix (e.g., wrap badge in `max-w-full overflow-hidden`, add responsive sizing, or switch `data-size` to `medium` on mobile).
+   - If clean, confirm no changes needed.
 
-2. **`src/components/Contact.tsx`** — render the badge markup inside a centered wrapper beneath the social icon row:
-   ```tsx
-   <div className="flex justify-center mt-10">
-     <div
-       className="badge-base LI-profile-badge"
-       data-locale="en_US"
-       data-size="large"
-       data-theme="dark"
-       data-type="HORIZONTAL"
-       data-vanity="pranav-a-56191b367"
-       data-version="v1"
-     >
-       <a
-         className="badge-base__link LI-simple-link"
-         href="https://ae.linkedin.com/in/pranav-a-56191b367?trk=profile-badge"
-       >
-         Pranav A
-       </a>
-     </div>
-   </div>
-   ```
-
-**Notes**
-- Theme is set to `dark` to match the site's strict dark aesthetic.
-- LinkedIn's script auto-renders the badge on mount; no React-specific init needed.
-- Badge is rendered inside an iframe by LinkedIn, so site styles won't conflict.
+**No code changes** unless verification surfaces a real issue — then I'll stop and report before editing.
 

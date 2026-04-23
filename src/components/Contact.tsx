@@ -151,7 +151,7 @@ const Contact = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex justify-center mt-10"
+          className="flex justify-center mt-10 w-full max-w-full overflow-hidden"
         >
           <div
             className="badge-base LI-profile-badge"

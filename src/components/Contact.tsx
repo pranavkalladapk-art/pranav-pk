@@ -13,6 +13,20 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    // (Re)inject LinkedIn badge script so it scans the DOM after React mounts the badge.
+    const existing = document.querySelector<HTMLScriptElement>(
+      'script[src="https://platform.linkedin.com/badges/js/profile.js"]'
+    );
+    if (existing) existing.remove();
+    const script = document.createElement("script");
+    script.src = "https://platform.linkedin.com/badges/js/profile.js";
+    script.async = true;
+    script.defer = true;
+    script.type = "text/javascript";
+    document.body.appendChild(script);
+  }, []);
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Film, Megaphone, Sparkles } from "lucide-react";
+import { Film, Globe, Megaphone, Sparkles } from "lucide-react";
 
 const services = [
   {
@@ -16,6 +16,11 @@ const services = [
     icon: Sparkles,
     title: "AI Visualization",
     description: "AI-generated visuals, concept design, and futuristic creative experiences powered by cutting-edge tools.",
+  },
+  {
+    icon: Globe,
+    title: "Website Development",
+    description: "Modern, responsive websites built with clean design and fast performance — from portfolios to business sites.",
   },
 ];
 

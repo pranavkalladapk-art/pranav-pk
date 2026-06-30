@@ -1,6 +1,6 @@
 import { useState, useCallback, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Film, Megaphone, Sparkles, Play, ChevronDown, ExternalLink, Instagram, Linkedin, Send } from "lucide-react";
+import { Film, Megaphone, Sparkles, Globe, Play, ChevronDown, ExternalLink, Instagram, Linkedin, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -14,6 +14,7 @@ const services = [
   { icon: Film, title: "Video Editing", description: "Cinematic edits, commercials, reels, and brand films crafted with precision and emotion." },
   { icon: Megaphone, title: "Content Creation", description: "Scroll-stopping social media content and branding visuals that amplify your message." },
   { icon: Sparkles, title: "AI Visualization", description: "AI-generated visuals, concept design, and futuristic creative experiences powered by cutting-edge tools." },
+  { icon: Globe, title: "Website Development", description: "Modern, responsive websites built with clean design and fast performance — from portfolios to business sites." },
 ];
 
 interface ProjectLink { label: string; url: string; youtubeId?: string; }
